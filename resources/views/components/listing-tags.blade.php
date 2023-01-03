@@ -1,7 +1,7 @@
 @props(['tagCsv'])
 
 @php
-    $tags = explode(',', $tagCsv)
+    $tags = explode(', ', $tagCsv) 
 @endphp
 <ul class="flex">
     @foreach ($tags as $tag)    
