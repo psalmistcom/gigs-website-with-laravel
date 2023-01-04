@@ -59,6 +59,10 @@ class ListingController extends Controller
 
     public function update(Request $request, Listing $listing)
     {
+        //authorize user that want to update the listing
+        if ($listing->user_id != auth()->id()) {
+            abort(403, 'You are not authorized to update this listing');
+        }
         // dd($request->file('logo'));
         $formFields = $request->validate([
             "title" => "required",
@@ -80,8 +84,18 @@ class ListingController extends Controller
 
     public function delete(Listing $listing)
     {
+        //authorize user that want to update the listing
+        if ($listing->user_id != auth()->id()) {
+            abort(403, 'You are not authorized to update this listing');
+        }
+
         $listing->delete();
 
         return redirect('/')->with('message', 'Listing deleted successfully');
+    }
+
+    public function manage()
+    {
+        return view('listings.manage', ['listings' => auth()->user()->listings()->get()]);
     }
 }
