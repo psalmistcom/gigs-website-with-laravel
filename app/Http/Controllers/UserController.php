@@ -28,7 +28,7 @@ class UserController extends Controller
 
         auth()->login($user);
 
-        return redirect()->with('message', 'user created and logged in');
+        return redirect('/')->with('message', 'user created and logged in');
     }
 
 
