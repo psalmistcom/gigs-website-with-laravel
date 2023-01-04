@@ -96,14 +96,12 @@ class ListingController extends Controller
 
     public function manage()
     {
+        // return view('listings.manage', ['listings' => auth()->user()->listings()->get()]);
         return view(
             'listings.manage',
             [
-                'listings' => auth()->user()->listings()->get()
+                'listings' => auth()->user()->listings()->latest()->get()
             ]
         );
-        // return view('listings.index', [
-        //     'listings' => Listing::latest()->auth()->user()->listings()->paginate(6)
-        // ]);
     }
 }
