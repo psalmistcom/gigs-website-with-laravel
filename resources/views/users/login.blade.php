@@ -7,7 +7,7 @@
             <p class="mb-4">Login to your account</p>
         </header>
 
-        <form method="POST" action="/users">
+        <form method="POST" action="/users/login">
             @csrf
             
             <div class="mb-6">
@@ -18,6 +18,7 @@
                     type="email"
                     class="border border-gray-200 rounded p-2 w-full"
                     name="email"
+                    value="{{old('email')}}"
                 />
                
                 @error('email')
