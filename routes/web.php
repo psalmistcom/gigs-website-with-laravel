@@ -29,19 +29,20 @@ use App\Http\Controllers\ListingController;
 */
 
 Route::get('/', [ListingController::class, 'index']);
-Route::get('/listings/create', [ListingController::class, 'create']);
-Route::post('/listings', [ListingController::class, 'store']);
-Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
-Route::put('/listings/{listing}', [ListingController::class, 'update']);
-Route::delete('/listings/{listing}', [ListingController::class, 'delete']);
+Route::get('/listings/create', [ListingController::class, 'create'])->middleware('auth');
+Route::post('/listings', [ListingController::class, 'store'])->middleware('auth');
+Route::get('/listings/{listing}/edit', [ListingController::class, 'edit'])->middleware('auth');
+Route::put('/listings/{listing}', [ListingController::class, 'update'])->middleware('auth');
+Route::delete('/listings/{listing}', [ListingController::class, 'delete'])->middleware('auth');
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
 
 //user controller
 Route::get('/register', [UserController::class, 'create']);
 Route::post('/users', [UserController::class, 'store']);
-Route::post('/logout', [UserController::class, 'logout']);
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
-Route::get('/login', [UserController::class, 'login']);
+Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 
 
