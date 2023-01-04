@@ -2,7 +2,7 @@
     <x-card class="p-10">
         <header>
             <h1 class="text-3xl text-center font-bold my-6 uppercase">
-                {{auth()->user()->name}}, Manage Gigs
+                {{auth()->user()->name}}, <span style="font-size:14px">Manage Gigs</span>
             </h1>
         </header>
     
