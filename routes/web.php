@@ -37,11 +37,11 @@ Route::delete('/listings/{listing}', [ListingController::class, 'delete'])->midd
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
 
 //user controller
-Route::get('/register', [UserController::class, 'create']);
+Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 Route::post('/users', [UserController::class, 'store']);
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
-Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 
