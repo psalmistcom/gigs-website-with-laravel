@@ -86,7 +86,7 @@ class ListingController extends Controller
     {
         //authorize user that want to update the listing
         if ($listing->user_id != auth()->id()) {
-            abort(403, 'You are not authorized to update this listing');
+            abort(403, 'You are not authorized to delete this listing');
         }
 
         $listing->delete();
